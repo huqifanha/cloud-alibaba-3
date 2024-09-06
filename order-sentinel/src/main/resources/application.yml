@@ -1,0 +1,18 @@
+server:
+  port: 8022
+
+spring:
+  application:
+    name: order-sentinel
+  cloud:
+    nacos:
+      discovery:
+        username: nacos
+        password: nacos
+        server-addr: 192.168.31.253:8848
+        namespace: nacos-test
+
+    sentinel:
+      transport:
+        dashboard: 127.0.0.1:8888
+      web-context-unify: false # 默认将调用链路收敛了，会导致链路流控不生效

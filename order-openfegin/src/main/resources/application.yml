@@ -1,0 +1,28 @@
+server:
+  port: 8016
+
+spring:
+  application:
+    name: order-service
+  cloud:
+    nacos:
+      discovery:
+        username: nacos
+        password: nacos
+        server-addr: 192.168.31.253:8848
+        namespace: nacos-test
+    openfeign:
+      client:
+        config:
+          stock-service:
+            #openfeign 日志局部配置
+            loggerLevel: BASIC
+            # 设置默认契约(还原成原生注解)，调用服务的时候不能使用spring的注解，例如 @RequestMapping
+            # contract: feign.Contract.Default
+            # 连接超时时间，默认2s
+            connectTimeout: 5000
+            # 请求处理超时时间，默认5s
+            readTimeout: 10000
+logging:
+  level:
+    com.example.order.feign: debug

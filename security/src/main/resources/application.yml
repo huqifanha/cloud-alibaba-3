@@ -1,0 +1,31 @@
+server:
+  port: 8021
+
+spring:
+  application:
+    name: security-service
+
+  data:
+    redis:
+      host: localhost
+      port: 6379
+      password: 123456
+      timeout: 5000
+      client-name: spring_test
+
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/aigc?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
+    username: root
+    password: cs123456
+
+mybatis-plus:
+  mapper-locations: classpath:mapper/**/*.xml
+  type-aliases-package: com.test.order.pojo
+  global-config:
+    db-config:
+      id-type: ASSIGN_ID
+      configuration:
+    # 配置日志，显示数据库操作语句, 本地开发测试环境打开使用
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+

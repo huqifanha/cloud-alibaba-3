@@ -1,0 +1,15 @@
+
+spring:
+  cloud:
+    nacos:
+      config:
+        username: nacos
+        password: nacos
+        server-addr: 192.168.31.253:8848
+        namespace: nacos-test
+        file-extension: yaml
+        refresh-enabled: true
+        shared-configs:
+          - data-id: nacos-config.yaml
+            group: DEFAULT_GROUP
+            refresh: true

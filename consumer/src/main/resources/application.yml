@@ -1,0 +1,23 @@
+server:
+  port: 8020
+
+spring:
+  application:
+    name: consumer-service
+  cloud:
+    nacos:
+      discovery:
+        username: nacos
+        password: nacos
+        server-addr: 192.168.31.253:8848
+        namespace: nacos-test
+
+rocketmq:
+  name-server: 127.0.0.1:9876
+  consumer:
+      group: producer_group
+      # 一次拉取消息最大值，注意是拉取消息的最大值而非消费最大值
+      pull-batch-size: 50
+
+
+

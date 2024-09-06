@@ -1,0 +1,33 @@
+server:
+  port: 8018
+
+spring:
+  application:
+    name: gateway
+  cloud:
+    gateway:
+      routes:
+        - id: order_route
+          uri: lb://order-service
+          predicates:
+            - Path=/order/**
+          filters:
+            - AddResponseHeader=Content-Type, application/json;charset=UTF-8
+        - id: producer_route
+          uri: lb://producer-service
+          predicates:
+            - Path=/producer/**
+        - id: security_route
+          uri: lb://security-service
+          predicates:
+            - Path=/auth/**
+          filters:
+            - StripPrefix=1 # 转发之前去掉第一层路径
+            - SetRequestHeader=Content-Type, application/json
+
+  data:
+    redis:
+      host: 192.168.1.253
+      port: 6379
+      password: 123456
+      timeout: 5000
